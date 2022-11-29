@@ -15,8 +15,7 @@ return new class extends Migration
     public function up()
     {
         DB::statement('ALTER TABLE `kbt_users` 
-        CHANGE COLUMN `id` `pk_user` INT UNSIGNED NOT NULL ;
-        ');
+        CHANGE COLUMN `id` `pk_user` INT UNSIGNED NOT NULL AUTO_INCREMENT;');
     }
 
     /**
@@ -27,7 +26,6 @@ return new class extends Migration
     public function down()
     {
         DB::statement('ALTER TABLE `kbt_users` 
-        CHANGE COLUMN `pk_user` `id` INT UNSIGNED NOT NULL ;
-        ');
+        CHANGE COLUMN `pk_user` `id` INT UNSIGNED NOT NULL AUTO_INCREMENT;');
     }
 };

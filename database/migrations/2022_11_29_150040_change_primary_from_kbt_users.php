@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,8 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        
-        Schema::rename('users', 'kbt_users');
+        DB::statement('ALTER TABLE `kbt_users` 
+        CHANGE COLUMN `id` `pk_user` INT UNSIGNED NOT NULL ;
+        ');
     }
 
     /**
@@ -24,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-       Schema::rename('kbt_users', 'users');
+        DB::statement('ALTER TABLE `kbt_users` 
+        CHANGE COLUMN `pk_user` `id` INT UNSIGNED NOT NULL ;
+        ');
     }
 };
